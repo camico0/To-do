@@ -137,8 +137,9 @@
             transition: 0.4s;
         }
         
-        #tasks .task .content .text:not(:read-only) {
+        #tasks .task .content {
             color: #71ffe3db;
+            font-size: 1rem;
         }
         
         #tasks .task .actions {
