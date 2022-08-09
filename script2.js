@@ -36,6 +36,9 @@ function createDeleteAll() {
 
     delete_all_button.addEventListener("click", () => {
         deleteAllTasks();
+
+        taskCount = 0;
+        deleteAllButton_visible = false;
     });
 }
 
