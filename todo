@@ -1,15 +1,14 @@
-LUCAS: 
+LUCAS:
 
 -Que cuando se actualice no se borren las tareas
 
-Pista: no base de datos 
+Pista: no base de datos
 no escribir en un txt
 usar o : local storage o cookies(mas complicadas)
 
+YO:
+-Agregar un " Clear all tasks" ✓
 
-
-
-YO: 
--Agregar un " Clear all tasks" 
--arreglar el tamaño del texto ( se corta )
--hacer los alert lindos - modal boostrap / !important
+- hacer que funcione
+  -arreglar el tamaño del texto ( se corta )
+  -hacer los alert lindos - modal boostrap / !important

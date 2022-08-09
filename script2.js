@@ -33,6 +33,36 @@ function createDeleteAll() {
     delete_all_contain.appendChild(delete_all_button);
 
     deleteAllButton_visible = true;
+
+    delete_all_button.addEventListener("click", () => {
+        deleteAllTasks();
+    });
+}
+
+function deleteAllTasks() {
+    const delete_all_el = document.getElementById("delete_All_Container");
+    const taskToDelete = document.getElementsByClassName("task");
+
+    // for (let i = 0; i < taskToDelete.length; i++) {
+    //     taskToDelete[i].remove();
+    //     console.log(i);
+    // }
+
+    //creo un Array usando mi HTML collection
+    Array.from(taskToDelete).forEach((task) => {
+        task.remove();
+    });
+
+    delete_all_el.remove();
+}
+
+function disabledAddTask() {
+    const addTask = document.getElementById("new-task-submit");
+    if (taskCount >= 8) {
+        addTask.disabled = true;
+    } else {
+        addTask.disabled = false;
+    }
 }
 
 window.addEventListener("load", () => {
@@ -67,6 +97,8 @@ window.addEventListener("load", () => {
 
         task_el.appendChild(task_content_el);
         list.appendChild(task_el);
+
+        disabledAddTask();
 
         // Acctions
 
@@ -110,6 +142,7 @@ window.addEventListener("load", () => {
             // } else {
             //     return;
             // }
+            disabledAddTask();
         });
 
         task_actions_el.appendChild(task_edit_el);
