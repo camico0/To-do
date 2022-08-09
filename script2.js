@@ -4,6 +4,35 @@ function deleteNode(node) {
         toDelete.removeChild(toDelete.firstChild);
     }
     toDelete.parentElement.removeChild(toDelete);
+    taskCount = taskCount - 1;
+    //taskCount--;
+}
+
+let taskCount = 0;
+let deleteAllButton_visible = false;
+
+//Delete All Button
+
+function createDeleteAll() {
+    const task_section = document.getElementById("task_list_id");
+
+    const delete_all_el = document.createElement("div");
+    delete_all_el.setAttribute("id", "delete_All_Container");
+    delete_all_el.classList.add("contain_deleteAll");
+
+    const delete_all_contain = document.createElement("div");
+    delete_all_contain.classList.add("deleteAll");
+
+    const delete_all_button = document.createElement("button");
+    delete_all_button.setAttribute("id", "delete_All");
+    delete_all_button.classList.add("deleteAllButton");
+    delete_all_button.innerText = "Delete all tasks";
+
+    task_section.appendChild(delete_all_el);
+    delete_all_el.appendChild(delete_all_contain);
+    delete_all_contain.appendChild(delete_all_button);
+
+    deleteAllButton_visible = true;
 }
 
 window.addEventListener("load", () => {
@@ -28,6 +57,8 @@ window.addEventListener("load", () => {
         const task_el = document.createElement("div");
         task_el.classList.add("task");
         task_el.setAttribute("id", key);
+        taskCount = taskCount + 1;
+        //taskCount++;
 
         const task_content_el = document.createElement("input");
         task_content_el.classList.add("content");
@@ -58,7 +89,7 @@ window.addEventListener("load", () => {
                 "#4fba22d6";
 
             var local = new Date();
-            task_tik_el.parentElement.parentElement.firstChild.innerText += ` ➜ FINISHED: ${local.getDay()}/${local.getMonth()}/${local.getFullYear()}`;
+            task_tik_el.parentElement.parentElement.firstChild.value += ` ➜ FINISHED: ${local.getDay()}/${local.getMonth()}/${local.getFullYear()}`;
         });
 
         // Delete button
@@ -68,11 +99,17 @@ window.addEventListener("load", () => {
         task_delete_el.innerText = "X";
         task_delete_el.addEventListener("click", () => {
             let result = confirm("are you sure you want to delete this task?");
-            if ((result = true)) {
+            if (result === true) {
                 deleteNode(key);
             } else {
                 return;
             }
+            //tambien se puede asi :
+            // if (result) {
+            //     deleteNode(key);
+            // } else {
+            //     return;
+            // }
         });
 
         task_actions_el.appendChild(task_edit_el);
@@ -95,5 +132,9 @@ window.addEventListener("load", () => {
                 task_edit_el.innerText = "Edit";
             }
         });
+
+        if (deleteAllButton_visible == false && taskCount > 2) {
+            createDeleteAll();
+        }
     });
 });

@@ -156,6 +156,33 @@
             transition: 0.4s;
         }
         
+        .contain_deleteAll {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .deleteAll {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 9rem;
+            height: 2.7rem;
+            margin-top: 2.5rem;
+            border: solid #8fa4cd 0.5px;
+            background-color: #8fa4cd3b;
+            border-radius: 1rem;
+        }
+        
+        .deleteAllButton {
+            cursor: pointer;
+            background-image: linear-gradient(to right, #71ffe3, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 1rem;
+            font-weight: 700;
+        }
+        
         #tasks .actions .button:hover {
             opacity: 0.5;
         }
