@@ -140,6 +140,7 @@
         #tasks .task .content {
             color: #71ffe3db;
             font-size: 1rem;
+            width: 80%;
         }
         
         #tasks .task .actions {

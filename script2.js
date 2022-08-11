@@ -11,8 +11,16 @@ function deleteNode(node) {
 let taskCount = 0;
 let deleteAllButton_visible = false;
 
-//Delete All Button
+function saveToLocalStorage(list) {
+    let myTasks = document.getElementsByClassName("tasks");
+    localStorage.setItem("myTask", JSON.stringify(tasks));
+}
 
+function getFromLocalStorage(list) {
+    let allMyTasks = JSON.parse(localStorage.getItem(task));
+}
+
+//Delete All Button
 function createDeleteAll() {
     const task_section = document.getElementById("task_list_id");
 
@@ -52,20 +60,24 @@ function deleteAllTasks() {
     // }
 
     //creo un Array usando mi HTML collection
-    Array.from(taskToDelete).forEach((task) => {
-        task.remove();
-    });
 
-    delete_all_el.remove();
+    if (confirm("Are you sure you want to delete all tasks?")) {
+        Array.from(taskToDelete).forEach((task) => {
+            task.remove();
+        });
+
+        delete_all_el.remove();
+    }
 }
 
 function disabledAddTask() {
     const addTask = document.getElementById("new-task-submit");
-    if (taskCount >= 8) {
+    if (taskCount >= 7) {
         addTask.disabled = true;
     } else {
         addTask.disabled = false;
     }
+    console.log(taskCount);
 }
 
 window.addEventListener("load", () => {
@@ -73,12 +85,14 @@ window.addEventListener("load", () => {
     const input = document.getElementById("new-task-input");
     const list = document.getElementById("tasks");
 
+    input.addEventListener("click", () => disabledAddTask());
+
     form.addEventListener("submit", (e) => {
         e.preventDefault();
 
         const text = input.value;
 
-        if (!text) {
+        if (!text.trim()) {
             alert("Please fill out the task");
             return;
         }
@@ -101,7 +115,7 @@ window.addEventListener("load", () => {
         task_el.appendChild(task_content_el);
         list.appendChild(task_el);
 
-        disabledAddTask();
+        //disabledAddTask();
 
         // Acctions
 
@@ -145,7 +159,7 @@ window.addEventListener("load", () => {
             // } else {
             //     return;
             // }
-            disabledAddTask();
+            //disabledAddTask();
         });
 
         task_actions_el.appendChild(task_edit_el);
@@ -172,5 +186,7 @@ window.addEventListener("load", () => {
         if (deleteAllButton_visible == false && taskCount > 2) {
             createDeleteAll();
         }
+
+        //saveToLocalStorage(myTasks);
     });
 });
