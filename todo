@@ -9,17 +9,13 @@ usar o : local storage o cookies(mas complicadas)
 localstorage: guardamos informacion de forma local en nuestro computador .
 
 YO:
--Agregar un " Clear all tasks" ✓
 
-- hacer que funcione ✓
-
--arreglar el tamaño del texto ( se corta )✓
--hacer los alert lindos - modal boostrap / !important
-
--hacer funcion de crear task (Componentizar)
+-hacer funcion de crear task (Componentizar) ✔
 
 - if contain finished no escribo finished
 
 - tarea en blanco NO
 - al eliminar cada tarea con la cruz queda el boton aun
-  \*-ver como llamar al enter y no al click (a losdos)
+  -ver como llamar al enter ademas del click
+
+  EJERCICO DE CODEWARS
