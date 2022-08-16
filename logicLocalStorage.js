@@ -1,9 +1,9 @@
 class LocalStorage {
-    constructor(name){
+    constructor(name) {
         this.variable_local_storage = name;
     }
 
-    saveToLocalStorage(task /* es un objeto */) {
+    saveToLocalStorage(task /* es un objeto */ ) {
         let getTareas = this.getFromLocalStorage();
 
         if (getTareas === null) {
@@ -12,12 +12,17 @@ class LocalStorage {
             localStorage.setItem(this.variable_local_storage, JSON.stringify(tareas));
         } else {
             getTareas.push(task);
-            localStorage.setItem(this.variable_local_storage, JSON.stringify(getTareas));
+            localStorage.setItem(
+                this.variable_local_storage,
+                JSON.stringify(getTareas)
+            );
         }
     }
 
     getFromLocalStorage() {
-        const tareasDelLocalStorage = localStorage.getItem(this.variable_local_storage); // o no trae nada : null  o "[{ tarea }]" como string
+        const tareasDelLocalStorage = localStorage.getItem(
+            this.variable_local_storage
+        ); // o no trae nada : null  o "[{ tarea }]" como string
         if (tareasDelLocalStorage !== null) {
             return JSON.parse(tareasDelLocalStorage);
         }
@@ -31,7 +36,7 @@ class LocalStorage {
     editTasktoLs(task, action) {
         const tasks = this.getFromLocalStorage();
         if (tasks !== null) {
-            let mis_tareas_mapeadas = []
+            let mis_tareas_mapeadas = [];
             if (action === "finished") {
                 mis_tareas_mapeadas = tasks.map(
                     (mi_tarea_individual_del_localstorage) => {
@@ -76,11 +81,14 @@ class LocalStorage {
             let newArray = [...tareasFromLs].filter(
                 (valor, indice, array) => valor.id !== id
             );
-            localStorage.setItem(this.variable_local_storage, JSON.stringify(newArray));
+            localStorage.setItem(
+                this.variable_local_storage,
+                JSON.stringify(newArray)
+            );
         }
     }
 
     deleteAllTasksFromLs(nombre) {
         localStorage.removeItem(nombre);
-      }
+    }
 }
